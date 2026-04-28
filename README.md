@@ -1,7 +1,12 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title>CBSE Result 2025-2026</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
 *{box-sizing:border-box;}
 
 body{
@@ -184,27 +189,50 @@ width:110px;
 font-size:11.5px;
 }
 }
-</style></head><body><div class="top">
+</style>
+</head>
+
+<body>
+
+<div class="top">
 <div class="logo">
 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/CBSE_logo.svg/512px-CBSE_logo.svg.png">
 <span>Senior School Certificate Examination (Class XII) Results 2026</span>
 </div>
-</div><div class="marquee">
+</div>
+
+<div class="marquee">
 <span>Brought to you by National Informatics Centre</span>
-</div><!-- PAGE 1 --><div class="container" id="page1">
+</div>
+
+<!-- PAGE 1 -->
+<div class="container" id="page1">
 <h3>Enter Roll Number</h3>
-<input type="text" id="roll" placeholder="Enter Roll Number"><div class="spinner" id="spinner"></div>
+<input type="text" id="roll" placeholder="Enter Roll Number">
+
+<div class="spinner" id="spinner"></div>
 <button id="submitBtn">Submit</button>
-</div><!-- PAGE 2 --><div class="container hidden" id="page2"><h3 style="text-align:center;margin-bottom:3px;font-size:15px;">Examination Results</h3>
+</div>
+
+<!-- PAGE 2 -->
+<div class="container hidden" id="page2">
+
+<h3 style="text-align:center;margin-bottom:3px;font-size:15px;">Examination Results</h3>
 <p style="text-align:center;font-size:12px;margin-top:0;">
 Senior School Certificate Examination (Class XII) Results 2026
-</p><div class="details">
+</p>
+
+<div class="details">
 <div><span>Roll No:</span><span id="rno"></span></div>
 <div><span>Candidate Name:</span><span id="name" style="font-weight:700"></span></div>
 <div><span>Mother's Name:</span><span id="mother"></span></div>
 <div><span>Father's Name:</span><span id="father"></span></div>
 <div><span>School's Name:</span><span id="school"></span></div>
-</div><div class="section-title">Main Subjects</div><table>
+</div>
+
+<div class="section-title">Main Subjects</div>
+
+<table>
 <thead>
 <tr>
 <th>SUB CODE</th>
@@ -216,7 +244,11 @@ Senior School Certificate Examination (Class XII) Results 2026
 </tr>
 </thead>
 <tbody id="mainMarks"></tbody>
-</table><div class="section-title">Additional Subject</div><table>
+</table>
+
+<div class="section-title">Additional Subject</div>
+
+<table>
 <thead>
 <tr>
 <th>SUB CODE</th>
@@ -228,17 +260,35 @@ Senior School Certificate Examination (Class XII) Results 2026
 </tr>
 </thead>
 <tbody id="addMarks"></tbody>
-</table><h3 id="result"></h3><button onclick="goBack()">Check Another Result</button>
+</table>
 
-<div class="bottom-section"><p style="color:#a94442;font-weight:600">
+<h3 id="result"></h3>
+
+<button onclick="goBack()">Check Another Result</button>
+
+<div class="bottom-section">
+
+<p style="color:#a94442;font-weight:600">
 <b>Note: Abbreviations used against Result:</b>
-</p><p style="color:#a94442;font-weight:600">
+</p>
+
+<p style="color:#a94442;font-weight:600">
 R.L. - Result Later, N.E. - Not Eligible, R.W. - Result Withheld, ABST - Absent, COMP - Compartment,
 UFM - Unfair means, SJD - Subjudice, N.R. - Not Registered,
 R.T. - Repeat in Theory, R.P. - Repeat in Practical, R.B. - Repeat in both
-</p><br><p style="color:#333">
+</p>
+
+<br>
+
+<p style="color:#333">
 <b>Disclaimer:</b> Neither NIC nor CBSE is responsible for any error.
-</p></div></div><script>
+</p>
+
+</div>
+
+</div>
+
+<script>
 
 const data={
 "2260695":{
@@ -327,5 +377,7 @@ document.getElementById("page2").classList.add("hidden");
 document.getElementById("roll").value="";
 }
 
-</script></body>
+</script>
+
+</body>
 </html>
