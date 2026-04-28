@@ -9,7 +9,7 @@
 <style>
 body{font-family:'Roboto',sans-serif;margin:0;background:#eef2f7}
 
-/* Header */
+/* Top bar */
 .top{
 background:#0b5ed7;
 color:white;
@@ -55,7 +55,6 @@ margin-top:10px;
 cursor:pointer;
 }
 
-/* Table */
 table{
 width:100%;
 border-collapse:collapse;
@@ -74,11 +73,15 @@ background:#2f4f8f;
 color:white
 }
 
+/* alternating row color */
 tbody tr:nth-child(even){
 background:#eef3ff;
 }
 
-p{margin:4px 0;font-size:14px}
+p{
+margin:4px 0;
+font-size:14px;
+}
 
 .hidden{display:none}
 
@@ -121,15 +124,16 @@ display:none;
 <input type="text" id="roll" placeholder="Enter Roll Number">
 
 <div class="spinner" id="spinner"></div>
-
-<button onclick="showResult()">Submit</button>
+<button id="submitBtn">Submit</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="container hidden" id="page2">
 
-<h3 style="text-align:center;">Examination Results</h3>
-<p style="text-align:center;">Senior School Certificate Examination (Class XII) Results 2026</p>
+<h3 style="text-align:center;margin-bottom:5px;">Examination Results</h3>
+<p style="text-align:center;font-size:14px;">
+Senior School Certificate Examination (Class XII) Results 2026
+</p>
 
 <p><b>Roll No:</b> <span id="rno"></span></p>
 <p><b>Candidate Name:</b> <span id="name" style="font-weight:700"></span></p>
@@ -169,14 +173,29 @@ display:none;
 
 <button onclick="goBack()">Check Another Result</button>
 
-<!-- NOTE -->
-<div style="margin-top:15px;color:#a94442;font-weight:600">
-<b>Note:</b> R.L., N.E., R.W., ABST, COMP, UFM, SJD, N.R., R.T., R.P., R.B.
-</div>
+<!-- NOTE + DISCLAIMER -->
+<div style="margin-top:15px;text-align:left;line-height:1.5">
 
-<!-- DISCLAIMER -->
-<div style="margin-top:10px;font-size:13px;color:#333">
-<b>Disclaimer:</b> Results shown are for immediate information only.
+<p style="color:#a94442;font-size:14px;font-weight:600">
+<b>Note: Abbreviations used against Result:</b>
+</p>
+
+<p style="color:#a94442;font-size:14px;font-weight:600">
+R.L. - Result Later (Your result is under preparation and will be declared soon), 
+N.E. - Not Eligible, R.W. - Result Withheld, ABST - Absent, COMP - Compartment, 
+UFM - Unfair means, SJD - Subjudice, N.R. - Not Registered, 
+R.T. - Repeat in Theory, R.P. - Repeat in Practical, R.B. - Repeat in both
+</p>
+
+<br>
+
+<p style="font-size:13px;color:#333">
+<b>Disclaimer:</b> Neither NIC nor CBSE is responsible for any inadvertent error that may have crept in the results being published on NET. 
+The results published on net are for immediate information to the examinees. 
+These cannot be treated as original mark sheets. 
+Original mark sheets have been issued by the Board separately.
+</p>
+
 </div>
 
 </div>
@@ -196,31 +215,44 @@ subjects:[
 ["043","CHEMISTRY",56,30,86,"A2","main"],
 ["034","HINDI MUSIC VOCAL",20,68,88,"A2","main"],
 
+// 🔥 back to original "--"
 ["500","WORK EXPERIENCE","--","--","--","A1","main"],
 ["502","HEALTH & PHYSICAL EDUCATION","--","--","--","A1","main"],
 ["503","GENERAL STUDIES","--","--","--","A1","main"],
 
+// additional
 ["048","PHYSICAL EDUCATION",60,30,90,"A1","add"]
 ],
 result:"PASS"
 }
 };
 
-function showResult(){
+document.getElementById("submitBtn").addEventListener("click", showResult);
 
+function showResult(){
 let roll=document.getElementById("roll").value.trim();
 
-if(!roll){
+if(roll===""){
 alert("Enter Roll Number");
 return;
 }
 
-let spinner=document.getElementById("spinner");
-spinner.style.display="block";
+let btn=document.getElementById("submitBtn");
+let spin=document.getElementById("spinner");
+
+btn.disabled=true;
+spin.style.display="block";
 
 setTimeout(()=>{
+processResult(roll);
+btn.disabled=false;
+spin.style.display="none";
+},1500);
+}
+
+function processResult(roll){
+
 if(!data[roll]){
-spinner.style.display="none";
 alert("Invalid Roll Number");
 return;
 }
@@ -253,10 +285,6 @@ let row=`<tr>
 document.getElementById("mainMarks").innerHTML=mainRows;
 document.getElementById("addMarks").innerHTML=addRows;
 document.getElementById("result").innerText="Result: "+s.result;
-
-spinner.style.display="none";
-
-},1000);
 }
 
 function goBack(){
