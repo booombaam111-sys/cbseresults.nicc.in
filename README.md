@@ -16,7 +16,7 @@ overflow-x:hidden;
 background:linear-gradient(to right,#1aa3a8,#2f4f8f);
 color:white;
 padding:8px;
-font-size:15px;
+font-size:14px;
 font-weight:500;
 }
 
@@ -28,7 +28,7 @@ justify-content:flex-start;
 }
 
 .logo img{
-height:32px;
+height:30px;
 }
 
 /* MARQUEE */
@@ -58,7 +58,7 @@ width:95%;
 max-width:1000px;
 margin:auto;
 background:white;
-padding:12px;
+padding:10px;
 margin-top:8px;
 border:1px solid #ccc;
 }
@@ -73,7 +73,7 @@ border:1px solid #ccc;
 
 /* BUTTON */
 button{
-padding:9px;
+padding:10px;
 width:100%;
 background:#1a73e8;
 color:white;
@@ -81,36 +81,37 @@ border:none;
 margin-top:10px;
 cursor:pointer;
 font-weight:500;
+font-size:16px;
 }
 
-/* DETAILS ALIGNMENT */
+/* DETAILS (UPPER SMALL) */
 .details{
-margin-top:6px;
-font-size:13.5px;
+margin-top:4px;
+font-size:12.5px;
 }
 
 .details div{
 display:flex;
-gap:10px;
-padding:2px 0;
+gap:8px;
+padding:1px 0;
 }
 
 .details span:first-child{
-width:150px;
+width:135px;
 font-weight:600;
 }
 
-/* TABLE */
+/* TABLE (SMALL) */
 table{
 width:100%;
 border-collapse:collapse;
-margin-top:8px;
-font-size:12.5px;
+margin-top:6px;
+font-size:11.5px;
 }
 
 th,td{
 border:1px solid #b5b5b5;
-padding:5px;
+padding:4px;
 text-align:center;
 }
 
@@ -126,8 +127,8 @@ background:#e6e9ff;
 .hidden{display:none}
 
 .section-title{
-margin-top:10px;
-font-size:13.5px;
+margin-top:8px;
+font-size:13px;
 font-weight:600;
 }
 
@@ -135,9 +136,24 @@ font-weight:600;
 #result{
 background:#3b4db7;
 color:white;
-padding:5px;
-margin-top:8px;
-font-size:14px;
+padding:4px;
+margin-top:6px;
+font-size:13px;
+}
+
+/* LOWER BIG SECTION */
+.bottom-section{
+margin-top:20px;
+}
+
+.bottom-section p{
+font-size:15px;
+line-height:1.6;
+margin:6px 0;
+}
+
+.bottom-section b{
+font-size:16px;
 }
 
 /* SPINNER */
@@ -159,13 +175,13 @@ display:none;
 
 @media(max-width:600px){
 th,td{
-font-size:11px;
-padding:4px;
+font-size:10.5px;
+padding:3px;
 }
 
 .details span:first-child{
-width:120px;
-font-size:12px;
+width:110px;
+font-size:11.5px;
 }
 }
 </style></head><body><div class="top">
@@ -179,8 +195,8 @@ font-size:12px;
 <h3>Enter Roll Number</h3>
 <input type="text" id="roll" placeholder="Enter Roll Number"><div class="spinner" id="spinner"></div>
 <button id="submitBtn">Submit</button>
-</div><!-- PAGE 2 --><div class="container hidden" id="page2"><h3 style="text-align:center;margin-bottom:3px;">Examination Results</h3>
-<p style="text-align:center;font-size:13px;margin-top:0;">
+</div><!-- PAGE 2 --><div class="container hidden" id="page2"><h3 style="text-align:center;margin-bottom:3px;font-size:15px;">Examination Results</h3>
+<p style="text-align:center;font-size:12px;margin-top:0;">
 Senior School Certificate Examination (Class XII) Results 2026
 </p><div class="details">
 <div><span>Roll No:</span><span id="rno"></span></div>
@@ -214,13 +230,13 @@ Senior School Certificate Examination (Class XII) Results 2026
 <tbody id="addMarks"></tbody>
 </table><h3 id="result"></h3><button onclick="goBack()">Check Another Result</button>
 
-<div style="margin-top:12px;line-height:1.4"><p style="color:#a94442;font-size:13px;font-weight:600">
+<div class="bottom-section"><p style="color:#a94442;font-weight:600">
 <b>Note: Abbreviations used against Result:</b>
-</p><p style="color:#a94442;font-size:13px;font-weight:600">
+</p><p style="color:#a94442;font-weight:600">
 R.L. - Result Later, N.E. - Not Eligible, R.W. - Result Withheld, ABST - Absent, COMP - Compartment,
 UFM - Unfair means, SJD - Subjudice, N.R. - Not Registered,
 R.T. - Repeat in Theory, R.P. - Repeat in Practical, R.B. - Repeat in both
-</p><br><p style="font-size:12.5px;color:#333">
+</p><br><p style="color:#333">
 <b>Disclaimer:</b> Neither NIC nor CBSE is responsible for any error.
 </p></div></div><script>
 
