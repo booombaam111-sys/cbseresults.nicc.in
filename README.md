@@ -1,4 +1,4 @@
-<!DOCTYPE html><html>
+<html>
 <head>
 <title>CBSE Result 2025-2026</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><style>
