@@ -1,382 +1,240 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>CBSE Result 2025-2026</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<title>CBSE Result</title>
 
 <style>
-*{box-sizing:border-box;}
+body{font-family:Arial;margin:0;background:#fff}
 
-body{
-font-family:'Roboto',sans-serif;
-margin:0;
-background:#f1f1f1;
-overflow-x:hidden;
+.topbar{background:#0099a8;color:#fff;padding:6px 10px;font-size:13px}
+
+.header{
+background:linear-gradient(to right,#1bb1b3,#3b4db7);
+color:#fff;padding:7px 8px;display:flex;align-items:center;gap:6px;font-size:12.5px
 }
+.header img{height:24px}
 
-/* TOP BAR */
-.top{
-background:linear-gradient(to right,#1aa3a8,#2f4f8f);
-color:white;
-padding:8px;
-font-size:14px;
-font-weight:500;
-}
-
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-justify-content:flex-start;
-}
-
-.logo img{
-height:30px;
-}
-
-/* MARQUEE */
 .marquee{
-background:#f5f5f5;
-overflow:hidden;
-white-space:nowrap;
-border-bottom:1px solid #ccc;
+background:#f5f5f5;overflow:hidden;white-space:nowrap;border-bottom:1px solid #ccc;
 }
-
 .marquee span{
-display:inline-block;
-padding-left:100%;
-animation:scrollText 12s linear infinite;
-font-size:12px;
-color:#333;
+display:inline-block;padding-left:100%;
+animation:scrollText 12s linear infinite;font-size:11.5px;
 }
-
 @keyframes scrollText{
-0%{transform:translateX(0);}
-100%{transform:translateX(-100%);}
+0%{transform:translateX(0)}
+100%{transform:translateX(-100%)}
 }
 
-/* CONTAINER */
-.container{
-width:95%;
-max-width:1000px;
-margin:auto;
-background:white;
-padding:10px;
-margin-top:8px;
-border:1px solid #ccc;
-}
+.container{width:95%;max-width:900px;margin:8px auto}
 
-/* INPUT */
-input{
-width:100%;
-padding:8px;
-margin-top:8px;
-border:1px solid #ccc;
-}
+input{width:100%;padding:8px;margin-top:6px;border:1px solid #ccc;font-size:13px}
 
-/* BUTTON */
 button{
-padding:10px;
-width:100%;
-background:#1a73e8;
-color:white;
-border:none;
-margin-top:10px;
-cursor:pointer;
-font-weight:500;
-font-size:16px;
+width:100%;padding:9px;margin-top:8px;background:#1a73e8;color:#fff;border:none;font-size:13px
 }
 
-/* DETAILS (UPPER SMALL) */
+.captcha-box{
+margin-top:8px;padding:7px;background:#f2f2f2;
+font-weight:bold;letter-spacing:2px;font-size:17px;text-align:center;
+}
+
+.spinner{
+border:4px solid #eee;border-top:4px solid #1a73e8;border-radius:50%;
+width:28px;height:28px;animation:spin 1s linear infinite;margin:10px auto;display:none
+}
+@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+
+/* 🔥 DETAILS FIX */
 .details{
-margin-top:4px;
-font-size:12.5px;
+font-size:13px;
+margin-top:6px;
+margin-bottom:10px;
 }
 
 .details div{
 display:flex;
-gap:8px;
-padding:1px 0;
+margin:4px 0;
 }
 
-.details span:first-child{
-width:135px;
-font-weight:600;
+.details .label{
+min-width:170px;
+font-weight:bold;
 }
 
-/* TABLE (SMALL) */
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:6px;
-font-size:11.5px;
+.details .value{
+flex:1;
 }
 
-th,td{
-border:1px solid #b5b5b5;
-padding:4px;
-text-align:center;
-}
+/* TABLE */
+table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
+th,td{border:1px solid #999;padding:4px;text-align:center}
+th{background:#3b4db7;color:#fff;font-size:12px}
 
-th{
+.highlight{background:#d9dcf7;}
+
+/* 🔥 RESULT GAP FIX */
+.result{
 background:#3b4db7;
-color:white;
+color:#fff;
+padding:4px;
+margin-top:14px;   /* 👈 GAP INCREASED */
+font-size:13px
 }
 
-tbody tr:nth-child(even){
-background:#e6e9ff;
+.check{text-align:center;margin:14px 0}
+.check a{
+color:#2b4ecf;font-size:18px;font-weight:bold;text-decoration:underline
+}
+
+.note{
+color:#a94442;
+font-size:12.8px;
+font-weight:600;
+line-height:1.6;
+margin-top:12px;
+}
+
+.disclaimer{
+margin-top:14px;font-size:12.5px;color:#333;line-height:1.5;
 }
 
 .hidden{display:none}
-
-.section-title{
-margin-top:8px;
-font-size:13px;
-font-weight:600;
-}
-
-/* RESULT BAR */
-#result{
-background:#3b4db7;
-color:white;
-padding:4px;
-margin-top:6px;
-font-size:13px;
-}
-
-/* LOWER BIG SECTION */
-.bottom-section{
-margin-top:20px;
-}
-
-.bottom-section p{
-font-size:15px;
-line-height:1.6;
-margin:6px 0;
-}
-
-.bottom-section b{
-font-size:16px;
-}
-
-/* SPINNER */
-.spinner{
-border:4px solid #f3f3f3;
-border-top:4px solid #1a73e8;
-border-radius:50%;
-width:28px;
-height:28px;
-animation:spin 1s linear infinite;
-margin:10px auto;
-display:none;
-}
-
-@keyframes spin{
-0%{transform:rotate(0deg);}
-100%{transform:rotate(360deg);}
-}
-
-@media(max-width:600px){
-th,td{
-font-size:10.5px;
-padding:3px;
-}
-
-.details span:first-child{
-width:110px;
-font-size:11.5px;
-}
-}
 </style>
 </head>
 
 <body>
 
-<div class="top">
-<div class="logo">
+<div class="topbar">केन्द्रीय माध्यमिक शिक्षा बोर्ड</div>
+
+<div class="header">
 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/CBSE_logo.svg/512px-CBSE_logo.svg.png">
-<span>Senior School Certificate Examination (Class XII) Results 2026</span>
-</div>
+<span>Central Board of Secondary Education</span>
 </div>
 
 <div class="marquee">
 <span>Brought to you by National Informatics Centre</span>
 </div>
 
-<!-- PAGE 1 -->
 <div class="container" id="page1">
-<h3>Enter Roll Number</h3>
+<h3 style="margin:6px 0;font-size:15px;">Enter Roll Number</h3>
+
 <input type="text" id="roll" placeholder="Enter Roll Number">
 
+<div class="captcha-box" id="captchaText"></div>
+
+<input type="text" id="captchaInput" placeholder="Enter Captcha">
+
 <div class="spinner" id="spinner"></div>
-<button id="submitBtn">Submit</button>
+
+<button onclick="checkResult()">Submit</button>
 </div>
 
-<!-- PAGE 2 -->
 <div class="container hidden" id="page2">
 
-<h3 style="text-align:center;margin-bottom:3px;font-size:15px;">Examination Results</h3>
-<p style="text-align:center;font-size:12px;margin-top:0;">
+<h3 style="text-align:center;margin:4px 0;font-size:15px;">Examination Results</h3>
+<p style="text-align:center;font-size:12.5px;margin:0;">
 Senior School Certificate Examination (Class XII) Results 2026
 </p>
 
+<!-- 🔥 COLON FIXED -->
 <div class="details">
-<div><span>Roll No:</span><span id="rno"></span></div>
-<div><span>Candidate Name:</span><span id="name" style="font-weight:700"></span></div>
-<div><span>Mother's Name:</span><span id="mother"></span></div>
-<div><span>Father's Name:</span><span id="father"></span></div>
-<div><span>School's Name:</span><span id="school"></span></div>
+
+<div><span class="label">Roll No:</span><span class="value">2260695</span></div>
+
+<div><span class="label">Candidate Name:</span><span class="value">ABHINAV KUMAR</span></div>
+
+<div><span class="label">Mother's Name:</span><span class="value">NAMITA DEVI</span></div>
+
+<div><span class="label">Father's Name:</span><span class="value">HIMANSHU SHEKHAR</span></div>
+
+<div><span class="label">School's Name:</span><span class="value">GURU GOBIND SINGH PUBLIC SCHOOL, BOKARO STEEL CITY</span></div>
+
 </div>
 
-<div class="section-title">Main Subjects</div>
-
 <table>
-<thead>
 <tr>
 <th>SUB CODE</th>
 <th>SUB NAME</th>
 <th>THEORY</th>
-<th>PRACTICAL</th>
-<th>TOTAL</th>
-<th>GRADE</th>
+<th>Prac/IA/Proj</th>
+<th>MARKS</th>
+<th>POSITIONAL GRADE</th>
 </tr>
-</thead>
-<tbody id="mainMarks"></tbody>
+
+<tr><td>301</td><td>ENGLISH CORE</td><td>66</td><td>30</td><td>96</td><td>A1</td></tr>
+<tr class="highlight"><td>041</td><td>MATHEMATICS</td><td>52</td><td>20</td><td>72</td><td>B1</td></tr>
+<tr><td>042</td><td>PHYSICS</td><td>45</td><td>30</td><td>75</td><td>B1</td></tr>
+<tr class="highlight"><td>043</td><td>CHEMISTRY</td><td>56</td><td>30</td><td>86</td><td>A2</td></tr>
+<tr><td>034</td><td>HINDI MUSIC VOCAL</td><td>20</td><td>68</td><td>88</td><td>A2</td></tr>
+<tr><td>500</td><td>WORK EXPERIENCE</td><td>--</td><td>--</td><td>--</td><td>A1</td></tr>
+<tr class="highlight"><td>502</td><td>HEALTH & PHYSICAL EDUCATION</td><td>--</td><td>--</td><td>--</td><td>A1</td></tr>
+<tr><td>503</td><td>GENERAL STUDIES</td><td>--</td><td>--</td><td>--</td><td>A1</td></tr>
+
+<tr class="highlight">
+<td colspan="6" style="text-align:left;"><b>Additional Subject</b></td>
+</tr>
+
+<tr><td>048</td><td>PHYSICAL EDUCATION</td><td>60</td><td>30</td><td>90</td><td>A1</td></tr>
+
 </table>
 
-<div class="section-title">Additional Subject</div>
+<div class="result">Result : PASS</div>
 
-<table>
-<thead>
-<tr>
-<th>SUB CODE</th>
-<th>SUB NAME</th>
-<th>THEORY</th>
-<th>PRACTICAL</th>
-<th>TOTAL</th>
-<th>GRADE</th>
-</tr>
-</thead>
-<tbody id="addMarks"></tbody>
-</table>
+<div class="check">
+<a href="#" onclick="goBack()">Check Another Result</a>
+</div>
 
-<h3 id="result"></h3>
-
-<button onclick="goBack()">Check Another Result</button>
-
-<div class="bottom-section">
-
-<p style="color:#a94442;font-weight:600">
-<b>Note: Abbreviations used against Result:</b>
-</p>
-
-<p style="color:#a94442;font-weight:600">
-R.L. - Result Later, N.E. - Not Eligible, R.W. - Result Withheld, ABST - Absent, COMP - Compartment,
-UFM - Unfair means, SJD - Subjudice, N.R. - Not Registered,
+<div class="note">
+<p><b>Note: Abbreviations used against Result:</b></p>
+<p>
+R.L. - Result Later, N.E. - Not Eligible, R.W. - Result Withheld, ABST - Absent,
+COMP - Compartment, UFM - Unfair means, SJD - Subjudice, N.R. - Not Registered,
 R.T. - Repeat in Theory, R.P. - Repeat in Practical, R.B. - Repeat in both
 </p>
+</div>
 
-<br>
-
-<p style="color:#333">
-<b>Disclaimer:</b> Neither NIC nor CBSE is responsible for any error.
-</p>
-
+<div class="disclaimer">
+<b>Disclaimer:</b> Neither NIC nor CBSE is responsible for any inadvertent error.
 </div>
 
 </div>
 
 <script>
+let captcha="";
 
-const data={
-"2260695":{
-name:"ABHINAV KUMAR",
-mother:"NAMITA DEVI",
-father:"HIMANSHU SHEKHAR",
-school:"GURU GOBIND SINGH PUBLIC SCHOOL, BOKARO STEEL CITY",
-subjects:[
-["301","ENGLISH CORE",66,30,96,"A1","main"],
-["041","MATHEMATICS",52,20,72,"B1","main"],
-["042","PHYSICS",45,30,75,"B1","main"],
-["043","CHEMISTRY",56,30,86,"A2","main"],
-["034","HINDI MUSIC VOCAL",20,68,88,"A2","main"],
-["500","WORK EXPERIENCE","--","--","--","A1","main"],
-["502","HEALTH & PHYSICAL EDUCATION","--","--","--","A1","main"],
-["503","GENERAL STUDIES","--","--","--","A1","main"],
-["048","PHYSICAL EDUCATION",60,30,90,"A1","add"]
-],
-result:"PASS"
+function generateCaptcha(){
+const chars="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789";
+captcha="";
+for(let i=0;i<6;i++){
+captcha+=chars.charAt(Math.floor(Math.random()*chars.length));
 }
-};
+document.getElementById("captchaText").innerText=captcha;
+}
+generateCaptcha();
 
-document.getElementById("submitBtn").addEventListener("click", showResult);
-
-function showResult(){
+function checkResult(){
 let roll=document.getElementById("roll").value.trim();
+let cap=document.getElementById("captchaInput").value.trim();
 
-if(roll===""){
-alert("Enter Roll Number");
-return;
-}
+if(roll!=="2260695"){alert("Invalid Roll Number");return;}
+if(cap!==captcha){alert("Wrong Captcha");generateCaptcha();return;}
 
-let btn=document.getElementById("submitBtn");
-let spin=document.getElementById("spinner");
-
-btn.disabled=true;
-spin.style.display="block";
+document.getElementById("spinner").style.display="block";
 
 setTimeout(()=>{
-processResult(roll);
-btn.disabled=false;
-spin.style.display="none";
-},1200);
-}
-
-function processResult(roll){
-
-if(!data[roll]){
-alert("Invalid Roll Number");
-return;
-}
-
-let s=data[roll];
-
 document.getElementById("page1").classList.add("hidden");
 document.getElementById("page2").classList.remove("hidden");
-
-document.getElementById("rno").innerText=roll;
-document.getElementById("name").innerText=s.name;
-document.getElementById("mother").innerText=s.mother;
-document.getElementById("father").innerText=s.father;
-document.getElementById("school").innerText=s.school;
-
-let mainRows="", addRows="";
-
-s.subjects.forEach(sub=>{
-let row=`<tr>
-<td>${sub[0]}</td>
-<td>${sub[1]}</td>
-<td>${sub[2]}</td>
-<td>${sub[3]}</td>
-<td>${sub[4]}</td>
-<td>${sub[5]}</td>
-</tr>`;
-(sub[6]==="add") ? addRows+=row : mainRows+=row;
-});
-
-document.getElementById("mainMarks").innerHTML=mainRows;
-document.getElementById("addMarks").innerHTML=addRows;
-document.getElementById("result").innerText="Result: "+s.result;
+document.getElementById("spinner").style.display="none";
+},3000);
 }
 
 function goBack(){
 document.getElementById("page1").classList.remove("hidden");
 document.getElementById("page2").classList.add("hidden");
-document.getElementById("roll").value="";
+generateCaptcha();
 }
-
 </script>
 
 </body>
