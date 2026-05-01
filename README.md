@@ -15,27 +15,29 @@ margin:0;
 background:#f1f1f1;
 }
 
+/* TOP */
 .topbar{
 background:#0099a8;
 color:#fff;
 padding:7px;
-text-align:center;
+text-align:left; /* 🔥 LEFT */
 font-size:14px;
 }
 
+/* HEADER */
 .header{
 background:#2f4f8f;
 color:#fff;
 padding:8px;
 display:flex;
 align-items:center;
-justify-content:center;
+justify-content:flex-start; /* 🔥 LEFT */
 gap:8px;
 font-size:14px;
 font-weight:500;
 }
-.header img{height:28px}
 
+/* MARQUEE */
 .marquee{
 background:#f5f5f5;
 overflow:hidden;
@@ -53,6 +55,7 @@ font-size:12px;
 100%{transform:translateX(-100%)}
 }
 
+/* CONTAINER */
 .container{
 width:95%;
 max-width:900px;
@@ -62,6 +65,7 @@ padding:10px;
 border:1px solid #ccc;
 }
 
+/* FORM */
 .form-group{
 margin:8px 0;
 font-size:13.5px;
@@ -77,6 +81,7 @@ border:1px solid #bbb;
 font-size:13px;
 }
 
+/* BUTTON */
 button{
 width:100%;
 padding:9px;
@@ -88,6 +93,7 @@ font-size:14px;
 cursor:pointer;
 }
 
+/* CAPTCHA */
 .captcha-box{
 margin-top:10px;
 padding:8px;
@@ -98,6 +104,7 @@ font-size:18px;
 text-align:center;
 }
 
+/* SPINNER */
 .spinner{
 border:4px solid #eee;
 border-top:4px solid #1a73e8;
@@ -113,6 +120,7 @@ display:none;
 100%{transform:rotate(360deg)}
 }
 
+/* DETAILS */
 .details{
 font-size:13.5px;
 margin-top:8px;
@@ -129,12 +137,11 @@ font-weight:500;
 flex:1;
 }
 
-/* 🔥 ONLY ADD */
+/* TABLE */
 .table-wrapper{
 width:100%;
 overflow-x:auto;
 }
-
 table{
 width:100%;
 min-width:650px;
@@ -159,6 +166,7 @@ font-weight:500;
 background:#eef3ff;
 }
 
+/* RESULT */
 .result{
 background:#2f4f8f;
 color:#fff;
@@ -167,6 +175,7 @@ margin-top:14px;
 font-size:14px;
 }
 
+/* LINK */
 .check{
 text-align:center;
 margin:15px 0;
@@ -178,6 +187,7 @@ font-weight:600;
 text-decoration:underline;
 }
 
+/* NOTE */
 .note{
 color:#a94442;
 font-size:13px;
@@ -186,6 +196,7 @@ margin-top:12px;
 line-height:1.5;
 }
 
+/* DISCLAIMER */
 .disclaimer{
 margin-top:12px;
 font-size:12.5px;
@@ -202,7 +213,6 @@ color:#333;
 <div class="topbar">केन्द्रीय माध्यमिक शिक्षा बोर्ड</div>
 
 <div class="header">
-<img src="https://cbse.gov.in/newsite/images/cbse-logo.png">
 <span>Central Board of Secondary Education</span>
 </div>
 
@@ -263,7 +273,6 @@ Senior School Certificate Examination (Class XII) Results 2026
 <div><span class="label">School's Name:</span><span class="value">GURU GOBIND SINGH PUBLIC SCHOOL, BOKARO STEEL CITY</span></div>
 </div>
 
-<!-- 🔥 ONLY WRAP -->
 <div class="table-wrapper">
 <table>
 <tr>
