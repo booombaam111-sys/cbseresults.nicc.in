@@ -15,29 +15,38 @@ color:#fff;padding:7px 8px;display:flex;align-items:center;gap:6px;font-size:12.
 }
 .header img{height:24px}
 
-.marquee{
-background:#f5f5f5;overflow:hidden;white-space:nowrap;border-bottom:1px solid #ccc;
-}
-.marquee span{
-display:inline-block;padding-left:100%;
-animation:scrollText 12s linear infinite;font-size:11.5px;
-}
-@keyframes scrollText{
-0%{transform:translateX(0)}
-100%{transform:translateX(-100%)}
+/* FIRST PAGE */
+.container{width:95%;max-width:600px;margin:20px auto}
+
+.form-group{
+display:flex;
+align-items:center;
+margin:10px 0;
+font-size:14px;
 }
 
-.container{width:95%;max-width:900px;margin:8px auto}
-
-input{width:100%;padding:8px;margin-top:6px;border:1px solid #ccc;font-size:13px}
-
-button{
-width:100%;padding:9px;margin-top:8px;background:#1a73e8;color:#fff;border:none;font-size:13px
+.form-group label{
+width:160px;
+font-weight:bold;
 }
 
+.form-group input{
+flex:1;
+padding:6px;
+border:1px solid #999;
+}
+
+.hint{font-size:12px;color:#555;margin-left:160px;}
+.red{color:red;font-size:13px;margin-left:160px;}
+
+button{padding:6px 14px;margin:10px 5px;}
+
+.center{text-align:center}
+
+/* CAPTCHA */
 .captcha-box{
-margin-top:8px;padding:7px;background:#f2f2f2;
-font-weight:bold;letter-spacing:2px;font-size:17px;text-align:center;
+margin-top:12px;padding:7px;background:#f2f2f2;
+font-weight:bold;letter-spacing:2px;font-size:18px;text-align:center;
 }
 
 .spinner{
@@ -46,59 +55,34 @@ width:28px;height:28px;animation:spin 1s linear infinite;margin:10px auto;displa
 }
 @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 
-/* 🔥 DETAILS FIX */
-.details{
-font-size:13px;
-margin-top:6px;
-margin-bottom:10px;
-}
+/* SECOND PAGE */
+.details{font-size:13px;margin-top:6px;margin-bottom:10px;}
+.details div{display:flex;margin:4px 0;}
+.details .label{min-width:170px;font-weight:bold;}
+.details .value{flex:1;}
 
-.details div{
-display:flex;
-margin:4px 0;
-}
-
-.details .label{
-min-width:170px;
-font-weight:bold;
-}
-
-.details .value{
-flex:1;
-}
-
-/* TABLE */
 table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
 th,td{border:1px solid #999;padding:4px;text-align:center}
 th{background:#3b4db7;color:#fff;font-size:12px}
 
 .highlight{background:#d9dcf7;}
 
-/* 🔥 RESULT GAP FIX */
 .result{
 background:#3b4db7;
 color:#fff;
 padding:4px;
-margin-top:14px;   /* 👈 GAP INCREASED */
+margin-top:14px;
 font-size:13px
 }
 
 .check{text-align:center;margin:14px 0}
-.check a{
-color:#2b4ecf;font-size:18px;font-weight:bold;text-decoration:underline
-}
+.check a{color:#2b4ecf;font-size:18px;font-weight:bold;text-decoration:underline}
 
 .note{
-color:#a94442;
-font-size:12.8px;
-font-weight:600;
-line-height:1.6;
-margin-top:12px;
+color:#a94442;font-size:12.8px;font-weight:600;line-height:1.6;margin-top:12px;
 }
 
-.disclaimer{
-margin-top:14px;font-size:12.5px;color:#333;line-height:1.5;
-}
+.disclaimer{margin-top:14px;font-size:12.5px;color:#333;line-height:1.5;}
 
 .hidden{display:none}
 </style>
@@ -113,24 +97,50 @@ margin-top:14px;font-size:12.5px;color:#333;line-height:1.5;
 <span>Central Board of Secondary Education</span>
 </div>
 
-<div class="marquee">
-<span>Brought to you by National Informatics Centre</span>
+<!-- FIRST PAGE -->
+<div class="container" id="page1">
+
+<h3 class="center">Senior School Certificate Examination (Class XII) Results 2026</h3>
+
+<div class="form-group">
+<label>Enter your Roll Number</label>
+<input type="text" id="roll">
 </div>
 
-<div class="container" id="page1">
-<h3 style="margin:6px 0;font-size:15px;">Enter Roll Number</h3>
+<div class="form-group">
+<label>Enter School No.</label>
+<input type="text" id="school">
+</div>
 
-<input type="text" id="roll" placeholder="Enter Roll Number">
+<div class="form-group">
+<label>Enter Date of Birth</label>
+<input type="text" id="dob">
+</div>
+<div class="hint">(Type DOB in dd/mm/yyyy format)</div>
+
+<div class="form-group">
+<label>Enter Admit Card ID</label>
+<input type="text" id="admit">
+</div>
+<div class="red">(as given on your admit card)</div>
 
 <div class="captcha-box" id="captchaText"></div>
 
-<input type="text" id="captchaInput" placeholder="Enter Captcha">
+<div class="form-group">
+<label>Enter Captcha</label>
+<input type="text" id="captchaInput">
+</div>
 
 <div class="spinner" id="spinner"></div>
 
+<div class="center">
 <button onclick="checkResult()">Submit</button>
+<button onclick="resetForm()">Reset</button>
 </div>
 
+</div>
+
+<!-- SECOND PAGE (TERA SAME) -->
 <div class="container hidden" id="page2">
 
 <h3 style="text-align:center;margin:4px 0;font-size:15px;">Examination Results</h3>
@@ -138,19 +148,12 @@ margin-top:14px;font-size:12.5px;color:#333;line-height:1.5;
 Senior School Certificate Examination (Class XII) Results 2026
 </p>
 
-<!-- 🔥 COLON FIXED -->
 <div class="details">
-
 <div><span class="label">Roll No:</span><span class="value">2260695</span></div>
-
 <div><span class="label">Candidate Name:</span><span class="value">ABHINAV KUMAR</span></div>
-
 <div><span class="label">Mother's Name:</span><span class="value">NAMITA DEVI</span></div>
-
 <div><span class="label">Father's Name:</span><span class="value">HIMANSHU SHEKHAR</span></div>
-
 <div><span class="label">School's Name:</span><span class="value">GURU GOBIND SINGH PUBLIC SCHOOL, BOKARO STEEL CITY</span></div>
-
 </div>
 
 <table>
@@ -216,9 +219,15 @@ generateCaptcha();
 
 function checkResult(){
 let roll=document.getElementById("roll").value.trim();
+let school=document.getElementById("school").value.trim();
+let dob=document.getElementById("dob").value.trim();
+let admit=document.getElementById("admit").value.trim();
 let cap=document.getElementById("captchaInput").value.trim();
 
 if(roll!=="2260695"){alert("Invalid Roll Number");return;}
+if(school!=="66242"){alert("Invalid School No.");return;}
+if(dob!=="23/11/2007"){alert("Invalid DOB");return;}
+if(admit!=="RJ765294"){alert("Invalid Admit Card ID");return;}
 if(cap!==captcha){alert("Wrong Captcha");generateCaptcha();return;}
 
 document.getElementById("spinner").style.display="block";
@@ -228,6 +237,15 @@ document.getElementById("page1").classList.add("hidden");
 document.getElementById("page2").classList.remove("hidden");
 document.getElementById("spinner").style.display="none";
 },3000);
+}
+
+function resetForm(){
+document.getElementById("roll").value="";
+document.getElementById("school").value="";
+document.getElementById("dob").value="";
+document.getElementById("admit").value="";
+document.getElementById("captchaInput").value="";
+generateCaptcha();
 }
 
 function goBack(){
