@@ -2,25 +2,51 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 <title>CBSE Result</title>
 
 <style>
-body{font-family:Arial;margin:0;background:#fff}
 
-.topbar{background:#0099a8;color:#fff;padding:6px 10px;font-size:13px}
+body{
+font-family:'Roboto',sans-serif;
+margin:0;
+background:#f1f1f1;
+}
+
+.topbar{
+background:#0099a8;
+color:#fff;
+padding:7px;
+text-align:center;
+font-size:14px;
+}
 
 .header{
-background:linear-gradient(to right,#1bb1b3,#3b4db7);
-color:#fff;padding:7px 8px;display:flex;align-items:center;gap:6px;font-size:12.5px
+background:#2f4f8f;
+color:#fff;
+padding:8px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+font-size:14px;
+font-weight:500;
 }
-.header img{height:24px}
+.header img{height:28px}
 
 .marquee{
-background:#f5f5f5;overflow:hidden;white-space:nowrap;border-bottom:1px solid #ccc;
+background:#f5f5f5;
+overflow:hidden;
+white-space:nowrap;
+border-bottom:1px solid #ccc;
 }
 .marquee span{
-display:inline-block;padding-left:100%;
-animation:scrollText 12s linear infinite;font-size:11.5px;
+display:inline-block;
+padding-left:100%;
+animation:scrollText 12s linear infinite;
+font-size:12px;
 }
 @keyframes scrollText{
 0%{transform:translateX(0)}
@@ -29,108 +55,145 @@ animation:scrollText 12s linear infinite;font-size:11.5px;
 
 .container{
 width:95%;
-max-width:1200px;
+max-width:900px;
 margin:10px auto;
+background:#fff;
+padding:10px;
+border:1px solid #ccc;
 }
 
-input{width:100%;padding:8px;margin-top:6px;border:1px solid #ccc;font-size:13px}
+.form-group{
+margin:8px 0;
+font-size:13.5px;
+}
+.form-group label{
+display:block;
+margin-bottom:3px;
+}
+input{
+width:100%;
+padding:8px;
+border:1px solid #bbb;
+font-size:13px;
+}
 
 button{
-width:100%;padding:9px;margin-top:8px;background:#1a73e8;color:#fff;border:none;font-size:13px
+width:100%;
+padding:9px;
+margin-top:10px;
+background:#1a73e8;
+color:#fff;
+border:none;
+font-size:14px;
+cursor:pointer;
 }
 
 .captcha-box{
-margin-top:8px;padding:7px;background:#f2f2f2;
-font-weight:bold;letter-spacing:2px;font-size:17px;text-align:center;
+margin-top:10px;
+padding:8px;
+background:#f2f2f2;
+font-weight:bold;
+letter-spacing:2px;
+font-size:18px;
+text-align:center;
 }
 
 .spinner{
-border:4px solid #eee;border-top:4px solid #1a73e8;border-radius:50%;
-width:28px;height:28px;animation:spin 1s linear infinite;margin:10px auto;display:none
+border:4px solid #eee;
+border-top:4px solid #1a73e8;
+border-radius:50%;
+width:28px;
+height:28px;
+animation:spin 1s linear infinite;
+margin:10px auto;
+display:none;
 }
-@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+@keyframes spin{
+0%{transform:rotate(0)}
+100%{transform:rotate(360deg)}
+}
 
-/* DETAILS */
 .details{
-font-size:13px;
-margin-top:6px;
-margin-bottom:10px;
+font-size:13.5px;
+margin-top:8px;
 }
 .details div{
 display:flex;
-margin:4px 0;
+margin:3px 0;
 }
 .details .label{
-min-width:170px;
-font-weight:bold;
+min-width:180px;
+font-weight:500;
 }
 .details .value{
 flex:1;
 }
 
-/* 🔥 RESPONSIVE TABLE FIX */
+/* 🔥 ONLY ADD */
 .table-wrapper{
 width:100%;
-overflow-x:auto;   /* 👈 mobile scroll */
+overflow-x:auto;
 }
 
 table{
 width:100%;
-min-width:650px;   /* 👈 desktop feel maintain */
+min-width:650px;
 border-collapse:collapse;
-font-size:12px;
-margin-top:6px
+margin-top:8px;
+font-size:12.8px;
 }
 
 th,td{
-border:1px solid #999;
-padding:6px;
-text-align:center
+border:1px solid #b5b5b5;
+padding:5px;
+text-align:center;
 }
 
 th{
-background:#3b4db7;
+background:#2f4f8f;
 color:#fff;
-font-size:12px
+font-weight:500;
 }
 
-.highlight{background:#d9dcf7;}
+.highlight{
+background:#eef3ff;
+}
 
 .result{
-background:#3b4db7;
+background:#2f4f8f;
 color:#fff;
-padding:4px;
+padding:5px;
 margin-top:14px;
-font-size:13px
+font-size:14px;
 }
 
-.check{text-align:center;margin:14px 0}
+.check{
+text-align:center;
+margin:15px 0;
+}
 .check a{
-color:#2b4ecf;font-size:18px;font-weight:bold;text-decoration:underline
+color:#1a0dab;
+font-size:18px;
+font-weight:600;
+text-decoration:underline;
 }
 
 .note{
 color:#a94442;
-font-size:12.8px;
+font-size:13px;
 font-weight:600;
-line-height:1.6;
 margin-top:12px;
+line-height:1.5;
 }
 
 .disclaimer{
-margin-top:14px;
+margin-top:12px;
 font-size:12.5px;
 color:#333;
-line-height:1.5;
 }
 
 .hidden{display:none}
 
-/* 🔥 DESKTOP IMPROVEMENT */
-@media(min-width:900px){
-.details .label{min-width:220px;}
-th,td{padding:8px;font-size:13px;}
-}
 </style>
 </head>
 
@@ -139,7 +202,7 @@ th,td{padding:8px;font-size:13px;}
 <div class="topbar">केन्द्रीय माध्यमिक शिक्षा बोर्ड</div>
 
 <div class="header">
-<img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/CBSE_logo.svg/512px-CBSE_logo.svg.png">
+<img src="https://cbse.gov.in/newsite/images/cbse-logo.png">
 <span>Central Board of Secondary Education</span>
 </div>
 
@@ -147,24 +210,48 @@ th,td{padding:8px;font-size:13px;}
 <span>Brought to you by National Informatics Centre</span>
 </div>
 
+<!-- PAGE 1 -->
 <div class="container" id="page1">
-<h3 style="margin:6px 0;font-size:15px;">Enter Roll Number</h3>
 
-<input type="text" id="roll" placeholder="Enter Roll Number">
+<h3 style="text-align:center;margin:5px 0;">Examination Results</h3>
+<p style="text-align:center;font-size:13px;margin:0;">
+Senior School Certificate Examination (Class XII) Results 2026
+</p>
+
+<div class="form-group">
+<label>Roll Number</label>
+<input type="text" id="roll">
+</div>
+
+<div class="form-group">
+<label>School Code</label>
+<input type="text" id="school">
+</div>
+
+<div class="form-group">
+<label>Date of Birth (dd/mm/yyyy)</label>
+<input type="text" id="dob">
+</div>
+
+<div class="form-group">
+<label>Admit Card ID</label>
+<input type="text" id="admit">
+</div>
 
 <div class="captcha-box" id="captchaText"></div>
-
 <input type="text" id="captchaInput" placeholder="Enter Captcha">
 
 <div class="spinner" id="spinner"></div>
 
 <button onclick="checkResult()">Submit</button>
+
 </div>
 
+<!-- PAGE 2 -->
 <div class="container hidden" id="page2">
 
-<h3 style="text-align:center;margin:4px 0;font-size:15px;">Examination Results</h3>
-<p style="text-align:center;font-size:12.5px;margin:0;">
+<h3 style="text-align:center;margin:5px 0;">Examination Results</h3>
+<p style="text-align:center;font-size:13px;margin:0;">
 Senior School Certificate Examination (Class XII) Results 2026
 </p>
 
@@ -176,15 +263,16 @@ Senior School Certificate Examination (Class XII) Results 2026
 <div><span class="label">School's Name:</span><span class="value">GURU GOBIND SINGH PUBLIC SCHOOL, BOKARO STEEL CITY</span></div>
 </div>
 
+<!-- 🔥 ONLY WRAP -->
 <div class="table-wrapper">
 <table>
 <tr>
 <th>SUB CODE</th>
 <th>SUB NAME</th>
 <th>THEORY</th>
-<th>Prac/IA/Proj</th>
-<th>MARKS</th>
-<th>POSITIONAL GRADE</th>
+<th>PRACTICAL</th>
+<th>TOTAL</th>
+<th>GRADE</th>
 </tr>
 
 <tr><td>301</td><td>ENGLISH CORE</td><td>66</td><td>30</td><td>96</td><td>A1</td></tr>
@@ -212,15 +300,13 @@ Senior School Certificate Examination (Class XII) Results 2026
 </div>
 
 <div class="note">
-<p><b>Note: Abbreviations used against Result:</b></p>
-<p>
-R.L. - Result Later, N.E. - Not Eligible, R.W. - Result Withheld, ABST - Absent,
-COMP - Compartment, UFM - Unfair means, SJD - Subjudice, N.R. - Not Registered,
+Note: Abbreviations used against Result:<br>
+R.L. - Result Later, N.E. - Not Eligible, R.W. - Result Withheld,
+ABST - Absent, COMP - Compartment, UFM - Unfair means,
+SJD - Subjudice, N.R. - Not Registered,
 R.T. - Repeat in Theory, R.P. - Repeat in Practical, R.B. - Repeat in both
-</p>
 </div>
 
-<!-- 🔥 UPDATED DISCLAIMER -->
 <div class="disclaimer">
 <b>Disclaimer:</b> Neither NIC nor CBSE is responsible for any inadvertent error that may have crept in the results being published on NET. The results published on net are for Immediate information to the examinees. These cannot be treated as original mark sheets. Original mark sheets have been issued by the Board separately.
 </div>
@@ -242,10 +328,18 @@ generateCaptcha();
 
 function checkResult(){
 let roll=document.getElementById("roll").value.trim();
+let school=document.getElementById("school").value.trim();
+let dob=document.getElementById("dob").value.trim();
+let admit=document.getElementById("admit").value.trim();
 let cap=document.getElementById("captchaInput").value.trim();
 
-if(roll!=="2260695"){alert("Invalid Roll Number");return;}
-if(cap!==captcha){alert("Wrong Captcha");generateCaptcha();return;}
+if(roll!=="2260695"||school!=="66242"||dob!=="23/11/2007"||admit!=="RJ765294"){
+alert("Invalid Details");return;
+}
+
+if(cap!==captcha){
+alert("Wrong Captcha");generateCaptcha();return;
+}
 
 document.getElementById("spinner").style.display="block";
 
