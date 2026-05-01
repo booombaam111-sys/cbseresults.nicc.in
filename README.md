@@ -7,7 +7,6 @@
 <style>
 body{font-family:Arial;margin:0;background:#fff}
 
-/* TOP */
 .topbar{background:#0099a8;color:#fff;padding:6px 10px;font-size:13px}
 
 .header{
@@ -16,43 +15,35 @@ color:#fff;padding:7px 8px;display:flex;align-items:center;gap:6px;font-size:12.
 }
 .header img{height:24px}
 
-/* 🔥 MARQUEE */
 .marquee{
-background:#f5f5f5;
-overflow:hidden;
-white-space:nowrap;
-border-bottom:1px solid #ccc;
+background:#f5f5f5;overflow:hidden;white-space:nowrap;border-bottom:1px solid #ccc;
 }
 .marquee span{
-display:inline-block;
-padding-left:100%;
-animation:scrollText 12s linear infinite;
-font-size:11.5px;
+display:inline-block;padding-left:100%;
+animation:scrollText 12s linear infinite;font-size:11.5px;
 }
 @keyframes scrollText{
 0%{transform:translateX(0)}
 100%{transform:translateX(-100%)}
 }
 
-.container{width:95%;max-width:900px;margin:8px auto}
+.container{
+width:95%;
+max-width:1200px;
+margin:10px auto;
+}
 
-/* FORM */
-.form-group{margin:6px 0;font-size:13px}
-.form-group label{display:block;margin-bottom:2px}
-input{width:100%;padding:7px;border:1px solid #ccc;font-size:13px}
+input{width:100%;padding:8px;margin-top:6px;border:1px solid #ccc;font-size:13px}
 
-/* BUTTON */
 button{
 width:100%;padding:9px;margin-top:8px;background:#1a73e8;color:#fff;border:none;font-size:13px
 }
 
-/* CAPTCHA */
 .captcha-box{
 margin-top:8px;padding:7px;background:#f2f2f2;
 font-weight:bold;letter-spacing:2px;font-size:17px;text-align:center;
 }
 
-/* SPINNER */
 .spinner{
 border:4px solid #eee;border-top:4px solid #1a73e8;border-radius:50%;
 width:28px;height:28px;animation:spin 1s linear infinite;margin:10px auto;display:none
@@ -60,17 +51,49 @@ width:28px;height:28px;animation:spin 1s linear infinite;margin:10px auto;displa
 @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 
 /* DETAILS */
-.details{font-size:13px;margin-top:6px;margin-bottom:10px}
-.details div{display:flex;margin:4px 0}
-.details .label{min-width:170px;font-weight:bold}
-.details .value{flex:1}
+.details{
+font-size:13px;
+margin-top:6px;
+margin-bottom:10px;
+}
+.details div{
+display:flex;
+margin:4px 0;
+}
+.details .label{
+min-width:170px;
+font-weight:bold;
+}
+.details .value{
+flex:1;
+}
 
-/* TABLE */
-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
-th,td{border:1px solid #999;padding:4px;text-align:center}
-th{background:#3b4db7;color:#fff;font-size:12px}
+/* 🔥 RESPONSIVE TABLE FIX */
+.table-wrapper{
+width:100%;
+overflow-x:auto;   /* 👈 mobile scroll */
+}
 
-/* 🔥 ONLY SELECTED SUBJECT HIGHLIGHT */
+table{
+width:100%;
+min-width:650px;   /* 👈 desktop feel maintain */
+border-collapse:collapse;
+font-size:12px;
+margin-top:6px
+}
+
+th,td{
+border:1px solid #999;
+padding:6px;
+text-align:center
+}
+
+th{
+background:#3b4db7;
+color:#fff;
+font-size:12px
+}
+
 .highlight{background:#d9dcf7;}
 
 .result{
@@ -95,10 +118,19 @@ margin-top:12px;
 }
 
 .disclaimer{
-margin-top:14px;font-size:12.5px;color:#333;line-height:1.5;
+margin-top:14px;
+font-size:12.5px;
+color:#333;
+line-height:1.5;
 }
 
 .hidden{display:none}
+
+/* 🔥 DESKTOP IMPROVEMENT */
+@media(min-width:900px){
+.details .label{min-width:220px;}
+th,td{padding:8px;font-size:13px;}
+}
 </style>
 </head>
 
@@ -111,49 +143,24 @@ margin-top:14px;font-size:12.5px;color:#333;line-height:1.5;
 <span>Central Board of Secondary Education</span>
 </div>
 
-<!-- 🔥 MOVING TEXT -->
 <div class="marquee">
 <span>Brought to you by National Informatics Centre</span>
 </div>
 
-<!-- PAGE 1 -->
 <div class="container" id="page1">
+<h3 style="margin:6px 0;font-size:15px;">Enter Roll Number</h3>
 
-<h3 style="text-align:center;margin:4px 0;font-size:15px;">Examination Results</h3>
-<p style="text-align:center;font-size:12.5px;margin:0;">
-Senior School Certificate Examination (Class XII) Results 2026
-</p>
-
-<div class="form-group">
-<label>Enter Roll Number</label>
-<input type="text" id="roll">
-</div>
-
-<div class="form-group">
-<label>Enter School Code</label>
-<input type="text" id="school">
-</div>
-
-<div class="form-group">
-<label>Enter Date of Birth (dd/mm/yyyy)</label>
-<input type="text" id="dob">
-</div>
-
-<div class="form-group">
-<label>Enter Admit Card ID</label>
-<input type="text" id="admit">
-</div>
+<input type="text" id="roll" placeholder="Enter Roll Number">
 
 <div class="captcha-box" id="captchaText"></div>
+
 <input type="text" id="captchaInput" placeholder="Enter Captcha">
 
 <div class="spinner" id="spinner"></div>
 
 <button onclick="checkResult()">Submit</button>
-
 </div>
 
-<!-- PAGE 2 -->
 <div class="container hidden" id="page2">
 
 <h3 style="text-align:center;margin:4px 0;font-size:15px;">Examination Results</h3>
@@ -169,6 +176,7 @@ Senior School Certificate Examination (Class XII) Results 2026
 <div><span class="label">School's Name:</span><span class="value">GURU GOBIND SINGH PUBLIC SCHOOL, BOKARO STEEL CITY</span></div>
 </div>
 
+<div class="table-wrapper">
 <table>
 <tr>
 <th>SUB CODE</th>
@@ -176,7 +184,7 @@ Senior School Certificate Examination (Class XII) Results 2026
 <th>THEORY</th>
 <th>Prac/IA/Proj</th>
 <th>MARKS</th>
-<th>GRADE</th>
+<th>POSITIONAL GRADE</th>
 </tr>
 
 <tr><td>301</td><td>ENGLISH CORE</td><td>66</td><td>30</td><td>96</td><td>A1</td></tr>
@@ -195,6 +203,7 @@ Senior School Certificate Examination (Class XII) Results 2026
 <tr><td>048</td><td>PHYSICAL EDUCATION</td><td>60</td><td>30</td><td>90</td><td>A1</td></tr>
 
 </table>
+</div>
 
 <div class="result">Result : PASS</div>
 
@@ -211,8 +220,9 @@ R.T. - Repeat in Theory, R.P. - Repeat in Practical, R.B. - Repeat in both
 </p>
 </div>
 
+<!-- 🔥 UPDATED DISCLAIMER -->
 <div class="disclaimer">
-<b>Disclaimer:</b> Neither NIC nor CBSE is responsible for any inadvertent error.
+<b>Disclaimer:</b> Neither NIC nor CBSE is responsible for any inadvertent error that may have crept in the results being published on NET. The results published on net are for Immediate information to the examinees. These cannot be treated as original mark sheets. Original mark sheets have been issued by the Board separately.
 </div>
 
 </div>
@@ -232,18 +242,10 @@ generateCaptcha();
 
 function checkResult(){
 let roll=document.getElementById("roll").value.trim();
-let school=document.getElementById("school").value.trim();
-let dob=document.getElementById("dob").value.trim();
-let admit=document.getElementById("admit").value.trim();
 let cap=document.getElementById("captchaInput").value.trim();
 
-if(roll!=="2260695" || school!=="66242" || dob!=="23/11/2007" || admit!=="RJ765294"){
-alert("Invalid Details");return;
-}
-
-if(cap!==captcha){
-alert("Wrong Captcha");generateCaptcha();return;
-}
+if(roll!=="2260695"){alert("Invalid Roll Number");return;}
+if(cap!==captcha){alert("Wrong Captcha");generateCaptcha();return;}
 
 document.getElementById("spinner").style.display="block";
 
